@@ -6,7 +6,7 @@
 /*   By: hparveen <hparveen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:20:08 by hparveen          #+#    #+#             */
-/*   Updated: 2025/11/19 13:39:17 by hparveen         ###   ########.fr       */
+/*   Updated: 2025/11/24 08:51:20 by hparveen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,14 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string &target)
 {
-    if(_hitPoints == 0 || _energyPoints == 0)
+    if(_hitPoints <= 0 )
     {
-        std::cout << MAGENTA << "ClapTrap " << _name << " cannot attack. Insufficient hit points or energy points." << RESET<< std::endl;
+        std::cout << MAGENTA << "ClapTrap " << _name << " is dead and cannot attack." << RESET<< std::endl;
+        return;
+    }
+    if(_energyPoints <= 0)
+    {
+        std::cout << MAGENTA << "ClapTrap " << _name << " has no energy points left to attack." << RESET<< std::endl;
         return;
     }
     _energyPoints--;
@@ -62,7 +67,12 @@ void ClapTrap::attack(const std::string &target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if(_hitPoints <= amount)
+    if(_hitPoints <= 0)
+    {
+        std::cout << MAGENTA << "ClapTrap " << _name << " is already dead." << RESET<< std::endl;
+        return;
+    }
+    if(_hitPoints <= static_cast<int>(amount))
         _hitPoints = 0;
     else
         _hitPoints -= amount;
@@ -72,9 +82,14 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    if(_hitPoints == 0 || _energyPoints == 0)
+    if(_hitPoints <= 0)
     {
-        std::cout << MAGENTA << "ClapTrap " << _name << " cannot be repaired. Insufficient hit points or energy points." << RESET<< std::endl;
+        std::cout << MAGENTA << "ClapTrap " << _name << " is dead and cannot be repaired." << RESET<< std::endl;
+        return;
+    }
+    if(_energyPoints <= 0)
+    {
+        std::cout << MAGENTA << "ClapTrap " << _name << " has no energy points left to repair." << RESET<< std::endl;
         return;
     }
     _hitPoints += amount;
