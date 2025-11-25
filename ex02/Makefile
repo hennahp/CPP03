@@ -7,7 +7,7 @@ GREEN = \033[0;32m
 YELLOW = \033[0;33m
 RESET = \033[0m
 
-SRCS = ClapTrap.cpp main.cpp ScavTrap.cpp
+SRCS = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp	
 
 OBJS = $(SRCS:.cpp=.o)
 

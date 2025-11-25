@@ -6,7 +6,7 @@
 /*   By: hparveen <hparveen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 08:57:34 by hparveen          #+#    #+#             */
-/*   Updated: 2025/11/24 13:33:33 by hparveen         ###   ########.fr       */
+/*   Updated: 2025/11/25 09:12:56 by hparveen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,20 @@
 
 int	main(void)
 {
-	std::cout << "\n--- Creating ScavTrap ---\n" << std::endl;
-    ScavTrap scav("Serena");
-    
-    std::cout << "\n--- Testing Attack ---\n" << std::endl;
-    scav.attack("Target Bot");
+    std::cout << "\n=== Creating FragTrap ===\n";
+    FragTrap frag("Fraggy");
 
-    std::cout << "\n--- Testing special ability ---\n" << std::endl;
+    std::cout << "\n=== Creating ScavTrap ===\n";
+    ScavTrap scav("Scavvy");
+
+    std::cout << "\n=== FragTrap actions ===\n";
+    frag.attack("TargetDummy");
+    frag.highFivesGuys();
+
+    std::cout << "\n=== ScavTrap actions ===\n";
     scav.guardGate();
+    scav.attack("Target2");
 
-    std::cout << "\n--- Testing Copy Constructor ---\n" << std::endl;
-    ScavTrap scavClone(scav);
-    scavClone.attack("Clone Target Bot");
-
-    std::cout << "\n--- Testing Copy Assignment Constructor ---\n" << std::endl;
-    ScavTrap scavCopy;
-    scavCopy = scav;
-
-    std::cout << "\n--- Testing Damage and Repair ---\n" << std::endl;
-    scav.takeDamage(30);
-    scav.beRepaired(20);
-    
-    std::cout << "\n--- Destroying ScavTrap ---\n" << std::endl;
+    std::cout << "\n=== End of program ===\n";
     return 0;
 }
