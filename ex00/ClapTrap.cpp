@@ -65,7 +65,8 @@ void ClapTrap::attack(const std::string &target)
         return;
     }
     _energyPoints--;
-    std::cout << CYAN << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << RESET<< std::endl;
+    std::cout << CYAN << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" 
+    << " remaining energy points: " << _energyPoints << RESET<< std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -80,7 +81,8 @@ void ClapTrap::takeDamage(unsigned int amount)
     else
         _hitPoints -= amount;
 
-    std::cout << MAGENTA << "ClapTrap " << _name << " takes " << amount << " points of damage! Remaining hit points: " << _hitPoints << RESET<< std::endl;
+    std::cout << MAGENTA << "ClapTrap " << _name << " takes " << amount << " points of damage! Remaining hit points: " << _hitPoints 
+    << " remaining energy points: " << _energyPoints << RESET<< std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -97,5 +99,6 @@ void ClapTrap::beRepaired(unsigned int amount)
     }
     _hitPoints += amount;
     _energyPoints--;
-    std::cout << GREEN << "ClapTrap " << _name << " is repaired by " << amount << " points! Current hit points: " << _hitPoints << RESET<< std::endl;
+    std::cout << GREEN << "ClapTrap " << _name << " is repaired by " << amount << " points! Current hit points: " << _hitPoints 
+    << " remaining energy points: " << _energyPoints << RESET<< std::endl;
 }
